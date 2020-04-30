@@ -44,10 +44,15 @@ app.get('/weather', (req, res) => {
                 return res.send({ error })
             }
 
+            // res.send({
+            //     forecast: forecastData,
+            //     location,
+            //     address: req.query.address
+            // })
             res.send({
-                forecast: forecastData,
-                location,
-                address: req.query.address
+                "fulfillmentText":forecastData,
+                "fulfillmentMessages":[{"text": {"text": [forecastData]}}],
+                "source":""                               
             })
         })
     })
